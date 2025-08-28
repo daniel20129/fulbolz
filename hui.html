@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tienda de Fútbol</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #006400;
+    }
+    .producto {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+    }
+    .producto:last-child {
+      border-bottom: none;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="number"] {
+      width: 80px;
+      padding: 5px;
+      margin-top: 5px;
+    }
+    .precio {
+      font-weight: bold;
+    }
+    #total {
+      font-size: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🏟️ Tienda de Fútbol</h1>
+
+  <div class="producto">
+    <h2> Balón Oficial</h2>
+    <img src="bal.jpg" alt="Balón de fútbol 1">
+    <p class="precio">Precio: $25</p>
+    <label for="cantidadBalon">Cantidad:</label>
+    <input type="number" id="cantidadBalon" min="0" value="0">
+  </div>
+
+  <div class="producto">
+    <h2>👕 Camiseta Selección</h2>
+ <img src="c.jpg" alt="Balón de fútbol 1">
+    <p class="precio">Precio: $40</p>
+    <label for="cantidadCamiseta">Cantidad:</label>
+    <input type="number" id="cantidadCamiseta" min="0" value="0">
+  </div>
+
+  <div id="total">Total: $0</div>
+
+  <button onclick="calcularTotal()">Calcular Total</button>
+  <button onclick="comprar()">Comprar</button>
+</div>
+
+<script>
+  function calcularTotal() {
+    const precioBalon = 25;
+    const precioCamiseta = 40;
+
+    const cantidadBalon = parseInt(document.getElementById("cantidadBalon").value) || 0;
+    const cantidadCamiseta = parseInt(document.getElementById("cantidadCamiseta").value) || 0;
+
+    const total = (cantidadBalon * precioBalon) + (cantidadCamiseta * precioCamiseta);
+
+    document.getElementById("total").textContent = `Total: $${total}`;
+  }
+
+  function comprar() {
+    const cantidadBalon = parseInt(document.getElementById("cantidadBalon").value) || 0;
+    const cantidadCamiseta = parseInt(document.getElementById("cantidadCamiseta").value) || 0;
+
+    if (cantidadBalon === 0 && cantidadCamiseta === 0) {
+      alert("No has seleccionado ningún producto.");
+    } else {
+      calcularTotal();
+      alert("¡Gracias por tu compra! ⚽👕");
+    }
+  }
+</script>
+
+</body>
+</html>
